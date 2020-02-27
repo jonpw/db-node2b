@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { map } from "rxjs/operators";
 
 @Component({
     selector: 'app-movies',
@@ -25,7 +26,7 @@ export class MoviesComponent implements OnInit {
 
     private refresh() {
         this.http.get("http://localhost:12345/movies")
-            .map(result => result.json())
+            .pipe(map(result => result.json()))
             .subscribe(result => {
                 this.movies = result;
             });
@@ -37,7 +38,7 @@ export class MoviesComponent implements OnInit {
             url = "http://localhost:12345/search/" + event.target.value;
         }
         this.http.get(url)
-            .map(result => result.json())
+            .pipe(map(result => result.json()))
             .subscribe(result => {
                 this.movies = result;
             });
