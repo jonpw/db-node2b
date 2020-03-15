@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+    NG2 Movie Database
+    <span class="app-toolbar-filler"></span>
+    <button mat-button (click)="save()">Save</button>
+</mat-toolbar>
+<div class="app-content">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Bought a new Movie?</mat-card-title>
+        </mat-card-header>
+        <form class="example-form">
+        <mat-form-field>
+	<mat-label>Movie Title</mat-label>
+            <input matInput placeholder="Big Movie 2" [(ngModel)]="movie.name"><br />
+	</mat-form-field>
+	<mat-form-field>
+	<mat-label>Genre</mat-label>
+            <input matInput placeholder="Genre" [(ngModel)]="movie.genre"><br />
+	</mat-form-field>
+            <mat-checkbox [checked]="false" [(ngModel)]="movie.formats.digital">Digital Copy</mat-checkbox>
+            <mat-checkbox [checked]="false" [(ngModel)]="movie.formats.bluray">Blu-Ray</mat-checkbox>
+            <mat-checkbox [checked]="false" [(ngModel)]="movie.formats.dvd">DVD</mat-checkbox>
+	</form>
+        
+    </mat-card>
+</div>
