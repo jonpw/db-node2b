@@ -50,6 +50,7 @@ import { AvailableRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
 import { CreateComponent } from './create/create.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { CreateComponent } from './create/create.component';
     RouterModule,
     RouterModule.forRoot(AvailableRoutes),
     //MaterialModule.forRoot(),
-    MATERIAL_MODULES
+    MATERIAL_MODULES,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
