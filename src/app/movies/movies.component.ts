@@ -15,7 +15,7 @@ export class MoviesComponent implements OnInit {
     displayedColumns: string[] = ['name', 'genre', 'digital', 'bluray', 'dvd'];
 
     public constructor(private http: Http, private router: Router, private location: Location) {
-        this.movies = [];
+        this.comps = [];
     }
 
     public ngOnInit() {
@@ -26,22 +26,22 @@ export class MoviesComponent implements OnInit {
     }
 
     private refresh() {
-        this.http.get("http://localhost:12345/movies")
+        this.http.get("http://niflheim.local:3010/api/component")
             .pipe(map(result => result.json()))
             .subscribe(result => {
-                this.movies = result;
-            });
+                this.comps = result;
+            });            
     }
 
     public search(event: any) {
-        let url = "http://localhost:12345/movies";
+        let url = "http://niflheim.local:3010/api/component";
         if(event.target.value) {
-            url = "http://localhost:12345/search/" + event.target.value;
+            url = "http://niflheim.local:3010/api/component?_where=(description,like," + event.target.value + ")";
         }
         this.http.get(url)
             .pipe(map(result => result.json()))
             .subscribe(result => {
-                this.movies = result;
+                this.comps = result;
             });
     }
 
